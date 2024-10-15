@@ -6,5 +6,12 @@ actor DBank{
   // Debug.print(debug_show(currentValue)); if you write Debug.print(currentValue), it will show error
   //because print expects a string
 
-  Debug.print(debug_show(id));
+  // Debug.print(debug_show(id));
+
+  public func topUp(){ //by deault methods ar private
+    currentValue+=1;
+    Debug.print(debug_show(currentValue));
+  };
+
+  // topUp();
 }
