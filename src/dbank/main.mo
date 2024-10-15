@@ -1,4 +1,5 @@
 import Debug "mo:base/Debug";
+import Nat "mo:base/Nat";
 actor DBank{
   var currentValue=300;
   currentValue := 100;
@@ -8,10 +9,15 @@ actor DBank{
 
   // Debug.print(debug_show(id));
 
-  public func topUp(){ //by deault methods ar private
-    currentValue+=1;
+  public func topUp(amount:Nat){ //by deault methods ar private,Nat is a whole num
+    currentValue+=amount;
     Debug.print(debug_show(currentValue));
   };
 
   // topUp();
+
+  public func withdraw(amount:Nat){
+    currentValue-=amount;
+    Debug.print(debug_show(currentValue));
+  }
 }
