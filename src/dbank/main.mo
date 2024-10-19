@@ -1,9 +1,10 @@
 import Debug "mo:base/Debug";
 import Nat "mo:base/Nat";
+import Int "mo:base/Int";
 actor DBank{
-  var currentValue=300;
-  currentValue := 100;
-  let id=123123; //let is a constant
+  stable var currentValue=300;
+  // currentValue := 100;
+  let id=12312; //let is a constant
   // Debug.print(debug_show(currentValue)); if you write Debug.print(currentValue), it will show error
   //because print expects a string
 
@@ -15,9 +16,19 @@ actor DBank{
   };
 
   // topUp();
-
+  // Nat => natural number
   public func withdraw(amount:Nat){
-    currentValue-=amount;
-    Debug.print(debug_show(currentValue));
+    let tempValue: Int=currentValue-amount;
+    if(tempValue>=0){
+      currentValue-=amount;
+      Debug.print(debug_show(currentValue));
+    }else{
+      Debug.print("Amount too large, currentValue less than zero.");
+    }
+  };
+
+// queries are fast compared to the update functions
+  public query func checkBalance():async Nat{
+    return currentValue;
   }
 }
